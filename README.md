@@ -59,12 +59,12 @@ O projeto simula o ambiente de rede de uma empresa com quatro departamentos isol
 
 | Roteador | Interface | IP            | Sub-rede |
 |----------|-----------|---------------|----------|
-| Router 0 | Fa0/0     | 192.168.0.1   | Rede A   |
-| Router 0 | Fa1/0     | 192.168.1.1   | Rede B   |
-| Router 0 | Fa0/1     | 10.0.0.1      | WAN      |
-| Router 1 | Fa0/0     | 192.168.2.1   | Rede C   |
-| Router 1 | Fa1/0     | 192.168.3.1   | Rede D   |
-| Router 1 | Fa0/1     | 10.0.0.2      | WAN      |
+| Router 0 | Gb0/0     | 192.168.0.1   | Rede A   |
+| Router 0 | Gb0/1     | 192.168.1.1   | Rede B   |
+| Router 0 | Gb0/2     | 10.0.0.1      | WAN      |
+| Router 1 | Gb0/0     | 192.168.2.1   | Rede C   |
+| Router 1 | Gb0/1     | 192.168.3.1   | Rede D   |
+| Router 1 | Gb0/2     | 10.0.0.2      | WAN      |
 
 ---
 
@@ -78,17 +78,17 @@ configure terminal
 hostname Router0
 
 ! Interface para Rede A
-interface FastEthernet0/0
+interface GigabitEthernet0/0
  ip address 192.168.0.1 255.255.255.0
  no shutdown
 
 ! Interface para Rede B
-interface FastEthernet1/0
+interface GigabitEthernet0/1
  ip address 192.168.1.1 255.255.255.0
  no shutdown
 
 ! Interface WAN (link com Router 1)
-interface FastEthernet0/1
+interface GigabitEthernet0/2
  ip address 10.0.0.1 255.255.255.252
  no shutdown
 
@@ -108,17 +108,17 @@ configure terminal
 hostname Router1
 
 ! Interface para Rede C
-interface FastEthernet0/0
+interface GigabitEthernet0/0
  ip address 192.168.2.1 255.255.255.0
  no shutdown
 
 ! Interface para Rede D
-interface FastEthernet1/0
+interface GigabitEthernet0/1
  ip address 192.168.3.1 255.255.255.0
  no shutdown
 
 ! Interface WAN (link com Router 0)
-interface FastEthernet0/1
+interface GigabitEthernet0/2
  ip address 10.0.0.2 255.255.255.252
  no shutdown
 
@@ -160,7 +160,7 @@ Após montar a topologia completa, os seguintes testes foram executados com suce
 |--------------|--------------|-----------|
 | PC A1 (.101) | PC B1 (.101) | ✅ OK      |
 | PC A1 (.101) | PC C1 (.101) | ✅ OK      |
-| PC A1 (.101) | PC D1 (.101) | ✅ OK      |
+| PC A2 (.102) | PC D4 (.104) | ✅ OK      |
 | PC B2 (.102) | PC D3 (.103) | ✅ OK      |
 | PC C4 (.104) | PC A2 (.102) | ✅ OK      |
 
@@ -185,6 +185,7 @@ Comunicação total entre todas as sub-redes confirmada.
 network-lab/
 ├── README.md              ← este arquivo
 ├── topology.png           ← screenshot da topologia no Packet Tracer
+├── ping-test.png          ← screenshot do teste de ping
 ├── network-lab.pkt        ← arquivo do Packet Tracer (abrir com PT 8.x+)
 └── docs/
     └── ip-plan.md         ← plano de endereçamento detalhado
@@ -196,10 +197,8 @@ network-lab/
 
 ## 👤 Autor
 
-**[Seu Nome]** — Estudante de Engenharia de Computação, IFSP Piracicaba  
+**[Gabriel R. Pires]** — Estudante de Engenharia de Computação, IFSP Piracicaba  
 GitHub: [@Rezecon](https://github.com/Rezecon)  
-LinkedIn: [linkedin.com/in/seu-perfil](https://linkedin.com/in/seu-perfil)
-
 ---
 
 ## 📚 O que aprendi
