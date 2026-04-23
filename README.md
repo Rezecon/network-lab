@@ -22,15 +22,15 @@ O projeto simula o ambiente de rede de uma empresa com quatro departamentos isol
                          /              \
                     [Router 0]      [Router 1]
                    /         \    /          \
-              [Sw A]       link 10.0.0.0/30   [Sw B]
+              [Sw A]       link 10.0.0.0/30   [Sw C]
               /                               \
-         [Srv A]                           [Srv B]
+         [Srv A]                           [Srv C]
         /  |  |  \                        /  |  |  \
      PC1 PC2 PC3 PC4                  PC1 PC2 PC3 PC4
 
-              [Sw C]                   [Sw D]
+              [Sw B]                   [Sw D]
               (R0)                     (R1)
-         [Srv C]                           [Srv D]
+         [Srv B]                           [Srv D]
         /  |  |  \                        /  |  |  \
      PC1 PC2 PC3 PC4                  PC1 PC2 PC3 PC4
 ```
